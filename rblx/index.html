@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roblox</title>
+  <style>
+    body {
+      background-color: #282c34; /* Blackish greyish purpleish */
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      width: 80%;
+      max-width: 800px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #333;
+    }
+    iframe {
+      width: 100%;
+      height: 400px; /* Adjust as needed */
+      border: none;
+      border-radius: 10px;
+      transition: filter 0.3s ease; /* Add a transition for smooth filter changes */
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #663399; /* Purpleish */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    #disclaimer {
+      margin-top: 10px;
+      font-size: 14px;
+      color: black; /* Set text color to black */
+    }
+    /* Styles for high mode */
+    #robloxIframe.high-mode {
+      filter: invert(100%) hue-rotate(360deg) brightness(120%); /* Invert colors, rotate hue, and increase brightness */
+      animation: rainbow 5s linear infinite;
+    }
+    @keyframes rainbow {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+    h1, h4, h6 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    h4 {
+      font-size: 24px;
+    }
+    h6 {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Roblox</h1>
+    <h4>Made by Matthew Hurd</h4>
+    <h6>Roblox is back up!</h6>
+    <iframe id="robloxIframe" src="https://dashboard-cq4z.onrender.com/" allowfullscreen allow="*"></iframe>
+    <button onclick="toggleRobloxFullscreen()">Fullscreen</button>
+    <button onclick="refreshRobloxIframe()">Refresh</button>
+    <button id="highModeButton" onclick="toggleHighMode()">Salvia</button>
+    <p id="disclaimer">If it's just a black screen, press the refresh button and wait 10-15 seconds!</p>
+  </div>
+  <script>
+    // Function to toggle Roblox iframe to fullscreen
+    function toggleRobloxFullscreen() {
+      const robloxIframe = document.getElementById('robloxIframe');
+      if (robloxIframe.requestFullscreen) {
+        robloxIframe.requestFullscreen();
+      } else if (robloxIframe.mozRequestFullScreen) {
+        robloxIframe.mozRequestFullScreen(); 
+      } else if (robloxIframe.webkitRequestFullscreen) {
+        robloxIframe.webkitRequestFullscreen();
+      } else if (robloxIframe.msRequestFullscreen) {
+        robloxIframe.msRequestFullscreen();
+      }
+    }
+    // Function to refresh the Roblox iframe
+    function refreshRobloxIframe() {
+      const robloxIframe = document.getElementById('robloxIframe');
+      robloxIframe.src = robloxIframe.src; // Reload the same source
+    }
+    // Function to toggle "Salvia" mode (high contrast)
+    function toggleHighMode() {
+      const robloxIframe = document.getElementById('robloxIframe');
+      robloxIframe.classList.toggle('high-mode'); // Toggle the class
+      const highModeButton = document.getElementById('highModeButton');
+      if (robloxIframe.classList.contains('high-mode')) {
+        highModeButton.textContent = 'Normal'; // Change button text
+      } else {
+        highModeButton.textContent = 'Salvia'; // Change button text back
+      }
+    }
+  </script>
+</body>
+</html>
