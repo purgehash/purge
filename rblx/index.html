@@ -31,30 +31,12 @@
     }
     button {
       padding: 10px 20px;
-      background-color: #663399; /* Purpleish */
+      background-color: #Ff0000; /* Purpleish */
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       margin-top: 10px;
-    }
-    #disclaimer {
-      margin-top: 10px;
-      font-size: 14px;
-      color: black; /* Set text color to black */
-    }
-    /* Styles for high mode */
-    #robloxIframe.high-mode {
-      filter: invert(100%) hue-rotate(360deg) brightness(120%); /* Invert colors, rotate hue, and increase brightness */
-      animation: rainbow 5s linear infinite;
-    }
-    @keyframes rainbow {
-      0% {
-        filter: hue-rotate(0deg);
-      }
-      100% {
-        filter: hue-rotate(360deg);
-      }
     }
     h1, h4, h6 {
       text-align: center;
@@ -77,11 +59,8 @@
     <iframe id="robloxIframe" src="https://dashboard-cq4z.onrender.com/" allowfullscreen allow="*"></iframe>
     <button onclick="toggleRobloxFullscreen()">Fullscreen</button>
     <button onclick="refreshRobloxIframe()">Refresh</button>
-    <button id="highModeButton" onclick="toggleHighMode()">Salvia</button>
-    <p id="disclaimer">If it's just a black screen, press the refresh button and wait 10-15 seconds!</p>
   </div>
   <script>
-    // Function to toggle Roblox iframe to fullscreen
     function toggleRobloxFullscreen() {
       const robloxIframe = document.getElementById('robloxIframe');
       if (robloxIframe.requestFullscreen) {
@@ -94,21 +73,9 @@
         robloxIframe.msRequestFullscreen();
       }
     }
-    // Function to refresh the Roblox iframe
     function refreshRobloxIframe() {
       const robloxIframe = document.getElementById('robloxIframe');
-      robloxIframe.src = robloxIframe.src; // Reload the same source
-    }
-    // Function to toggle "Salvia" mode (high contrast)
-    function toggleHighMode() {
-      const robloxIframe = document.getElementById('robloxIframe');
-      robloxIframe.classList.toggle('high-mode'); // Toggle the class
-      const highModeButton = document.getElementById('highModeButton');
-      if (robloxIframe.classList.contains('high-mode')) {
-        highModeButton.textContent = 'Normal'; // Change button text
-      } else {
-        highModeButton.textContent = 'Salvia'; // Change button text back
-      }
+      robloxIframe.src = robloxIframe.src;
     }
   </script>
 </body>
